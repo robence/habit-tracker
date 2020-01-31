@@ -1,0 +1,10 @@
+.skill {
+  display: inline-block;
+  align-self: flex-end;
+  padding: 10px;
+  margin-right: 8px;
+}
+
+.boldText {
+  font-weight: bold;
+}

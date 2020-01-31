@@ -1,0 +1,41 @@
+db.habits.insert({
+    "name": "Wake up",
+    "details": {
+        "startDate": "2020-01-31",
+        "values": [0, 0, 1]
+    }
+});
+
+db.habits.insert({
+    "name": "Sleep early",
+    "details": {
+        "startDate": "2020-01-17",
+        "values": [0, 0, 0]
+    }
+
+});
+
+db.habits.insert({
+    "name": "50 Push ups",
+    "details": {
+        "startDate": "2020-01-27",
+        "values": [1, 1]
+    }
+});
+
+db.habits.insert({
+    "name": "30min exercise",
+    "details": {
+        "startDate": "2020-01-21",
+        "values": [1, 1, 1]
+    }
+});
+
+db.habits.insert({
+    "name": "10min typewriting",
+    "details": {
+        "startDate": "2020-01-31",
+        "values": [1, 1, 0]
+    }
+});
+

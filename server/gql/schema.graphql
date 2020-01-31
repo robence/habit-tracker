@@ -1,0 +1,15 @@
+type Habit {
+  id: ID!
+  name: String!
+  details: HabitDetail
+}
+
+type HabitDetail {
+  id: ID!
+  startDate: String
+  values: [Int]
+}
+
+type Query {
+    habits(): [Habit!]!
+}

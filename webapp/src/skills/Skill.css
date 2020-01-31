@@ -1,0 +1,31 @@
+.skills {
+    display: flex;
+}
+
+.skill {
+    display: inline-block;
+    align-self: flex-end;
+    padding: 10px;
+    margin-right: 8px;
+}
+
+.greySkill {
+    background-color: lightgrey;
+}
+
+.greySkill:hover {
+    background-color: darkgrey;
+}
+
+.greenSkill {
+    background-color: greenyellow;
+}
+
+.greenSkill:hover {
+    background-color: darkseagreen;
+}
+
+.boldText {
+    font-weight: bold;
+}
+
