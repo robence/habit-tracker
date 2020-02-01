@@ -1,5 +1,5 @@
 import React from "react";
-import { HabitDetails } from "../habits/HabitDetail";
+import { HabitDetails } from "../habitDetails/HabitDetails";
 
 export function Habit(props) {
   const pr = props.habit;

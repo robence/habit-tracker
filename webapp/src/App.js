@@ -11,15 +11,15 @@ export class App extends Component {
   };
 
   componentDidMount() {
-    this.requestProgrammers();
+    this.requestProgrammers("");
   }
 
-  requestProgrammers() {
+  requestProgrammers(search) {
     this.client
       .query({
         query: gql`
                 {
-                    habits() {
+                    habits(name: "${search}") {
                         name,
                         details{
                             startDate,
