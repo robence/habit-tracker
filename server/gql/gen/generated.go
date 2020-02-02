@@ -194,8 +194,9 @@ type HabitDetail {
 }
 
 type Query {
-    habits(name: String!): [Habit!]!
-}`},
+  habits(name: String!): [Habit!]!
+}
+`},
 )
 
 // endregion ************************** generated!.gotpl **************************

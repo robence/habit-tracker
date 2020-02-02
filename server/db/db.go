@@ -9,7 +9,7 @@ import (
 )
 
 type DB interface {
-	GetHabits() ([]*model.Habit, error)
+	GetHabits(name string) ([]*model.Habit, error)
 }
 
 type MongoDB struct {
@@ -24,7 +24,7 @@ func New(client *mongo.Client) *MongoDB {
 	}
 }
 
-func (db MongoDB) GetHabits() ([]*model.Habit, error) {
+func (db MongoDB) GetHabits(name string) ([]*model.Habit, error) {
 	res, err := db.collection.Find(context.TODO(), db.filter())
 	if err != nil {
 		log.Printf("Error while fetching habits: %s", err.Error())
