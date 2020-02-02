@@ -1,13 +1,14 @@
 package db
 
 import (
-	"go.mongodb.org/mongo-driver/bson"
 	"reflect"
 	"testing"
+
+	"go.mongodb.org/mongo-driver/bson"
 )
 
 func TestFilter(t *testing.T) {
-	// mongoDB := MongoDB{}
+	mongoDB := MongoDB{}
 
 	got := mongoDB.filter()
 	// got := "a"
