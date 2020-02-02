@@ -13,6 +13,9 @@
 
 *coverage.txt
 
+# Binary for local server
+server/habit-tracker
+
 .idea
 *.iml
 
