@@ -2,14 +2,15 @@
 
 package model
 
-type Habit struct {
-	ID      string       `json:"id"`
-	Name    string       `json:"name"`
-	Details *HabitDetail `json:"details"`
+type Credentials struct {
+	ID       string `json:"id"`
+	Username string `json:"username"`
+	Email    string `json:"email"`
+	Password string `json:"password"`
 }
 
-type HabitDetail struct {
-	ID        string  `json:"id"`
-	StartDate *string `json:"startDate"`
-	Values    []*int  `json:"values"`
+type Habit struct {
+	ID      string   `json:"id"`
+	Name    string   `json:"name"`
+	Entries []string `json:"entries"`
 }
