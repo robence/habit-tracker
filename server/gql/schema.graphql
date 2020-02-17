@@ -1,74 +1,15 @@
-# type User {
-#   id: ID!
-#   credentials: Credentials!
-#   habits: [Habit!]
-# }
-
-# type Credentials {
-#   id: ID!
-#   username: String!
-#   email: String!
-#   password: String!
-# }
+scalar DateTime
 
 type Habit {
   id: ID!
   name: String!
-  entries: [String!]
+  createdAt: DateTime!
 }
 
 type Query {
   habits(name: String!): [Habit!]!
-  # me: User
 }
 
 type Mutation {
   createHabit(name: String!): Habit!
 }
-
-# mutation createUser($input: UserInput!) {
-#   createUser(input: $input) {
-#     user {
-#       id
-#       firstName
-#       lastName
-#       phone
-#       email
-#       username
-#     }
-#   }
-# }
-
-#  type Article {
-#    id: ID!
-#    title: String!
-#    content: String!
-#  }
-#  type Mutation {
-#    publishArticle(title: String!, content: String!): Article!
-#  }
-
-# mutation createUser(
-#   $email: String
-#   $firstName: String
-#   $lastName: String
-#   $phone: String
-#   $username: String!
-# ) {
-#   createUser(
-#     email: $email
-#     firstName: $firstName
-#     lastName: $lastName
-#     phone: $phone
-#     username: $username
-#   ) {
-#     user {
-#       id
-#       firstName
-#       lastName
-#       phone
-#       email
-#       username
-#     }
-#   }
-# }

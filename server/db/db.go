@@ -4,9 +4,12 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"time"
 
 	"github.com/robence/habit-tracker/model"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
+
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
@@ -28,7 +31,6 @@ func New(client *mongo.Client) *MongoDB {
 }
 
 func (db MongoDB) GetHabits(name string) ([]*model.Habit, error) {
-	fmt.Println("Get Habits", name)
 	res, err := db.habitModel.Find(context.TODO(), db.filter())
 	if err != nil {
 		log.Printf("Error while fetching habits: %s", err.Error())
@@ -40,37 +42,29 @@ func (db MongoDB) GetHabits(name string) ([]*model.Habit, error) {
 		log.Printf("Error while decoding habits: %s", err.Error())
 		return nil, err
 	}
+	fmt.Printf("queried habits with name %s\n", name)
 	return p, nil
 }
 
 func (db MongoDB) CreateHabit(name string) (*model.Habit, error) {
-	// func (db MongoDB) CreateHabit(name string) (interface{}, err) {
-	fmt.Println("Create Habit", name)
+	createdAt := time.Now().Format(time.RFC3339)
+	id := primitive.NewObjectID().Hex()
+	habit := model.Habit{id, name, createdAt}
 
-	habit := model.Habit{}
-	// var p *model.User
-
-	// habit.ID = primitive.NewObjectID()
-	habit.Name = name
-	// habit.CreatedAt = time.Now()
-	// habit.UpdatedAt = time.Now()
 	res, err := db.habitModel.InsertOne(context.TODO(), habit)
-	fmt.Printf("inserted document with ID %v\n", res.InsertedID)
 
 	if err != nil {
 		log.Printf("Error while adding habit: %s", err.Error())
 		return nil, err
 	}
 
-	var insertedHabit *model.Habit
+	fmt.Printf("inserted habit with ID %v\n", res.InsertedID)
+	var h *model.Habit
 	filter := bson.D{{"name", name}}
-	documentReturned := db.habitModel.FindOne(context.TODO(), filter)
-	if documentReturned == nil {
-		log.Printf("Error while finding habit: %s")
-		return nil, err
+	if err := db.habitModel.FindOne(context.TODO(), filter).Decode(&h); err != nil {
+		log.Fatal(err)
 	}
-	documentReturned.Decode(&insertedHabit)
-	return insertedHabit, nil
+	return h, nil
 }
 
 func (db MongoDB) filter() bson.D {

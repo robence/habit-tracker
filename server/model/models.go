@@ -2,15 +2,8 @@
 
 package model
 
-type Credentials struct {
-	ID       string `json:"id"`
-	Username string `json:"username"`
-	Email    string `json:"email"`
-	Password string `json:"password"`
-}
-
 type Habit struct {
-	ID      string   `json:"id"`
-	Name    string   `json:"name"`
-	Entries []string `json:"entries"`
+	ID        string `json:"id"`
+	Name      string `json:"name"`
+	CreatedAt string `json:"createdAt"`
 }
